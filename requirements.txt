@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-multipart
+numpy
+opencv-python-headless
+tensorflow-cpu
+scikit-image
+h5py
+pillow
+requests
+streamlit
+matplotlib
+request

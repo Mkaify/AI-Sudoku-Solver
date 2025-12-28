@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: sudoku_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models  # Mount models so you don't have to rebuild to update them
+    networks:
+      - sudoku_net
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: sudoku_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000/solve  # Tells Streamlit where the API is
+    depends_on:
+      - api
+    networks:
+      - sudoku_net
+
+networks:
+  sudoku_net:
+    driver: bridge

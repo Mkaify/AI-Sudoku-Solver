@@ -1,0 +1,22 @@
+# Python / Virtual Environments
+__pycache__/
+*.pyc
+venv/
+.env
+.ipynb_checkpoints/
+
+# System
+.DS_Store
+
+# Large Model Files (Optional: Remove these lines if you WANT to track models)
+*.h5
+*.hdf5
+models/*.h5
+models/*.hdf5
+
+# IDE Settings
+.vscode/
+.idea/
+
+# Docker
+docker-compose.override.yml
