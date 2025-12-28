@@ -58,10 +58,11 @@ uvicorn app:app --reload --host 0.0.0.0 --port 8000
 ```
     
 ```bash
-streamlit run ui.pyAccess the app at http://localhost:8501
+streamlit run ui.py
 ```
-    
 
+Access the app at http://localhost:8501
+    
 ### Option B: Run with Docker (Recommended)
 
 ```bash
