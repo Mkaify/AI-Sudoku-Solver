@@ -17,3 +17,5 @@ venv/
 
 # Docker
 docker-compose.override.yml
+
+certbot/

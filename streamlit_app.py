@@ -2,9 +2,10 @@ import streamlit as st
 import requests
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 # Connect to your running FastAPI backend
-API_URL = "http://localhost:8000/solve"
+API_URL = os.getenv("API_URL", "https://neural-sudoku-solver.centralindia.cloudapp.azure.com:8000/solve")
 
 st.set_page_config(page_title="Sudoku AI Solver", layout="wide")
 
@@ -55,7 +56,7 @@ uploaded_file = st.sidebar.file_uploader("Choose a Sudoku Image", type=["jpg", "
 
 if uploaded_file is not None:
     # Show uploaded image
-    st.sidebar.image(uploaded_file, caption="Original Image", use_column_width=True)
+    st.sidebar.image(uploaded_file, caption="Original Image", use_container_width=True)
     
     if st.button("🧩 Solve Puzzle"):
         with st.spinner("Processing... (This might take a moment)"):
