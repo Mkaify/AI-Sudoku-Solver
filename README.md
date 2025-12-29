@@ -38,7 +38,7 @@ sudoku-deploy/
 
 ### Prerequisites
 
-1.  **Download Models**: You must download the trained models and zero_template.jpg from the link "https://drive.google.com/drive/folders/1wX1TkCopwKOPIMYUcBs0w-F7CWx8GKyq?usp=drive_link" and place them in the models/ directory:
+1.  **Download Models**: You must download the trained models and zero_template.jpg and place them in the models/ and images/ directory respectively:
     
     *   digit\_svhn-196-0.14.hdf5
         
