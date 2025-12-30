@@ -1,21 +1,4 @@
-# Python / Virtual Environments
-__pycache__/
-*.pyc
-venv/
-.env
-.ipynb_checkpoints/
-
-# System
-.DS_Store
-
-# Large Model Files (Optional: Remove these lines if you WANT to track models)
-
-
-# IDE Settings
-.vscode/
-.idea/
-
-# Docker
-docker-compose.override.yml
-
 certbot/
+node_modules/
+__pycache__/
+.env
