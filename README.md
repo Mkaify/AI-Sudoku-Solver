@@ -1,4 +1,3 @@
-
 # 🧩 Neural Sudoku Solver
 
 An AI-powered web application that solves Sudoku puzzles from images using Computer Vision and Deep Learning. 
@@ -16,6 +15,14 @@ Unlike traditional backtracking algorithms, this project uses a **Pure Neural Ne
     * **Frontend**: Streamlit for an interactive drag-and-drop UI.
 
 ---
+
+## 📸 Screenshots (Demo)
+
+Here is the step-by-step process of the AI solving a puzzle:
+
+| **1. Original Image** | **2. Detected Grid** | **3. Solved Output** |
+|:---:|:---:|:---:|
+| <img src="images/1.png" width="250"> | <img src="images/2.png" width="250"> | <img src="images/3.png" width="250"> |
 
 ## 📂 Project Structure
 
@@ -73,6 +80,42 @@ docker-compose up --build
         
     *   API Docs: http://localhost:8000/docs
         
+
+
+## ☁️ Deployment & DevOps Architecture
+
+This application is deployed on a **Microsoft Azure Virtual Machine (Standard B2s)** using a production-ready containerized architecture. It features a custom **Nginx Reverse Proxy** for security and traffic management, ensuring the backend APIs remain isolated from the public internet.
+
+### 🏗️ Architecture Diagram
+
+```mermaid
+graph LR
+    User((User)) -->|HTTPS / 443| Nginx[Nginx Reverse Proxy]
+    subgraph Azure_VM [Azure Virtual Machine]
+        Nginx -->|Proxy Pass| Streamlit[Frontend Container :8501]
+        Nginx -->|Proxy Pass| FastAPI[Backend Container :8000]
+        Streamlit -->|Internal Net| FastAPI
+        FastAPI -->|Load| CNN_Model[TensorFlow Model]
+    end
+```
+
+### 🔐 Key Infrastructure Features
+
+-   **Docker Compose Orchestration**: The entire stack (Frontend, Backend, Proxy) is containerized and managed via Docker Compose, ensuring consistent environments across development and production.
+    
+-   **Nginx Reverse Proxy**:
+    
+    -   Acts as the single entry point (Gateway), handling all incoming HTTP/HTTPS traffic.
+        
+    -   **SSL Termination**: Secured with **Let's Encrypt** certificates (auto-renewing via Certbot).
+        
+    -   **Route Handling**: Directs `/` traffic to Streamlit and `/solve` traffic to FastAPI.
+        
+-   **Security Hardening**:
+    
+    -   **Firewall Rules**: Public access is restricted to ports 80/443 only.
+        
+    -   **Internal Networking**: The Backend (FastAPI) is isolated on an internal Docker network, inaccessible from the outside world.    
 
 🧠 How It Works
 ---------------
